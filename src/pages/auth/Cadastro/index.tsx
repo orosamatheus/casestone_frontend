@@ -59,7 +59,7 @@ function Cadastro(){
                     <label htmlFor= "email">E-mail</label>
                     <input id= "email" type='email'{...register("email")}/>
                     <label htmlFor= "password">Password</label>
-                    <input id ="password"type ='password' {...register("password")}/>
+                    <input id ="password"type ='password'  autoComplete="off" {...register("password")}/>
                     <button className ="submitBtn" type="submit">Sign up</button>
                 </form>
             </ContentContainer>

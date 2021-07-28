@@ -33,7 +33,6 @@ function Login() {
         }
     }
 
-    
     return (
         <AppContainer>
             <ButtonsContainer>
@@ -56,7 +55,7 @@ function Login() {
                     <label htmlFor="email">E-mail</label>
                     <input id="email" {...register("email")} />
                     <label htmlFor="password">Password</label>
-                    <input id="password"type='password' {...register("password")} />
+                    <input id="password"type='password' autoComplete="off" {...register("password") } />
                     <button className='submitBtn' type="submit">Sign In</button>
                 </form>
             </ContentContainer>
