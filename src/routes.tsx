@@ -2,10 +2,10 @@ import { useContext } from 'react'
 import { Context } from './Context/auth'
 
 import {
-    Switch,
-    Route,
-    Redirect
-  } from 'react-router-dom'
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 
 import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
@@ -19,7 +19,7 @@ interface CustomRouteProps {
   component?: any
 }
 
-function CustomRoute({isPrivate, ...rest}: CustomRouteProps){
+function CustomRoute({ isPrivate, ...rest }: CustomRouteProps) {
   const { isLogged } = useContext(Context)
 
   if (isPrivate && !isLogged) {
@@ -29,17 +29,29 @@ function CustomRoute({isPrivate, ...rest}: CustomRouteProps){
   return <Route {...rest} />
 }
 
-function Routes(){
+function Routes() {
+  const { isLogged } = useContext(Context)
 
-      return(
-          <Switch>
-              <Redirect exact from="/" to="/home"/>
-              <CustomRoute exact path="/home" component={Home}/>
-              <CustomRoute exact path ="/login" component={Login}/>
-              <CustomRoute exact path="/cadastro" component={Cadastro}/>
-              <CustomRoute exact isPrivate path="/dashboard" component ={Dashboard}/>
-          </Switch>
-      )
+  if (!isLogged) {
+    return (
+      <Switch>
+        <Redirect exact from="/" to="/home" />
+        <CustomRoute exact path="/home" component={Home} />
+        <CustomRoute exact path="/login" component={Login} />
+        <CustomRoute exact path="/cadastro" component={Cadastro} />
+        <CustomRoute exact isPrivate path="/dashboard" component={Dashboard} />
+      </Switch>
+    )
   }
+  return (
+    <Switch>
+      <Redirect exact from="/" to="/dashboard" />
+      <Redirect exact from="/login" to="/dashboard" />
+      <Redirect exact from="/cadastro" to="/dashboard" />
+      <CustomRoute exact path="/home" component={Home} />
+      <CustomRoute exact isPrivate path="/dashboard" component={Dashboard} />
+    </Switch>
+  )
+}
 
 export { Routes }
