@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Cadastro from "./pages/auth/Cadastro";
 import Dashboard from "./pages/dashboard"
+import Details from './pages/details';
+import Profile from './pages/profile';
+import Favorites from './pages/favorites';
 
 interface CustomRouteProps {
   isPrivate?: boolean
@@ -50,6 +53,9 @@ function Routes() {
       <Redirect exact from="/cadastro" to="/dashboard" />
       <CustomRoute exact path="/home" component={Home} />
       <CustomRoute exact isPrivate path="/dashboard" component={Dashboard} />
+      <CustomRoute exact isPrivate path="/dashboard/details/:id" component={Details} />
+      <CustomRoute exact isPrivate path="/profile" component={Profile} />
+      <CustomRoute exact isPrivate path="/favorites" component={Favorites} />
     </Switch>
   )
 }
