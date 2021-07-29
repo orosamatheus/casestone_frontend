@@ -34,7 +34,7 @@ function DashboardProvider({children}: DashboardProviderProps){
             alert("Character favoritado!")
         } catch(err) { 
             if(err.response) {
-                alert(err.message)
+                alert("Esse character já foi favoritado!")
             }
         }
     }
@@ -52,10 +52,51 @@ function DashboardProvider({children}: DashboardProviderProps){
             alert("Comic favoritado!")
         } catch(err) { 
             if(err.response) {
-                alert(err.message)
+                alert("Esse comic já foi favoritado!")
             }
         }
     }
+
+    async function handleUnfavoriteCharacter(id : string){
+        const token = localStorage.getItem('token')
+
+        try {
+            await api.delete(`/characters`, {
+                headers : { 
+                    Authorization: `Bearer ${token}`
+                },
+                data : {
+                    character_id : id
+                }
+            })
+            alert("Character desfavoritado!")
+        } catch(err) { 
+            if(err.response) {
+                alert("Esse character já foi desfavoritado!")
+            }
+        }
+    }
+
+    async function handleUnfavoriteComic(id : string){
+        const token = localStorage.getItem('token')
+
+        try {
+            await api.delete(`/comics`, {
+                headers : { 
+                    Authorization: `Bearer ${token}`
+                },
+                data : {
+                    comic_id : id
+                }
+            })
+            alert("Comic desfavoritado!")
+        } catch(err) { 
+            if(err.response) {
+                alert("Esse character já foi desfavoritado!")
+            }
+        }
+    }
+
 
 
 
@@ -67,9 +108,9 @@ function DashboardProvider({children}: DashboardProviderProps){
             option,
             setOption,
             handleFavoriteCharacter,
-            handleFavoriteComic
-
-            
+            handleFavoriteComic,
+            handleUnfavoriteCharacter,
+            handleUnfavoriteComic
         }}
         >
             {children}

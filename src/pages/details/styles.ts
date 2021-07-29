@@ -51,8 +51,9 @@ div{
             color: white;
             background: #CE1212;
             transition: 0.3s all ease;
+            margin-left: 15px;
         :hover{
-            filter: brightness(0.8);
+            filter: brightness(0.5);
         }
         }
     }

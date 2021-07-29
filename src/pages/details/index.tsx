@@ -13,7 +13,14 @@ interface ParamsProps {
 
 export default function Details() {
 
-    const { option, handleFavoriteCharacter, handleFavoriteComic } = useContext(DashboardContext)
+    const {
+        option,
+        setOption,
+        handleFavoriteCharacter,
+        handleFavoriteComic,
+        handleUnfavoriteCharacter,
+        handleUnfavoriteComic }
+        = useContext(DashboardContext)
 
     let { id }: ParamsProps = useParams();
     const [results, setResults] = useState([]);
@@ -21,11 +28,19 @@ export default function Details() {
     useEffect(() => {
 
         async function getResults() {
+
+            if (option === "characters"){
+                setOption("comics")
+            } else {
+                setOption("characters")
+            }
+
             const response = await api.get(`/marvel/${option}Id/${id}`)
             setResults(response.data)
             console.log(response.data)
         }
         getResults()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -47,13 +62,23 @@ export default function Details() {
                                     </div>
                                     {option === "characters"
                                         ?
-                                        <button onClick={() => handleFavoriteCharacter(result.id)}>
-                                            Favoritar
-                                        </button>
+                                        <div>
+                                            <button onClick={() => handleFavoriteCharacter(result.id)}>
+                                                Like
+                                            </button>
+                                            <button onClick = {() => handleUnfavoriteCharacter(result.id)}>
+                                                Unlike
+                                            </button>
+                                        </div>
                                         :
-                                        <button onClick={() => handleFavoriteComic(result.id)}>
-                                            Favoritar
-                                        </button>
+                                        <div>
+                                            <button onClick={() => handleFavoriteComic(result.id)}>
+                                                Like
+                                            </button>
+                                            <button onClick = {() => handleUnfavoriteComic(result.id)}>
+                                                Unlike
+                                            </button>
+                                        </div>
                                     }
 
                                 </div>
