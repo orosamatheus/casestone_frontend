@@ -1,6 +1,12 @@
-export interface ProviderProps {
+export interface ProvidersProps {
     children: React.ReactElement
 }
+
+export interface ContextsProviderProps extends ProvidersProps { }
+
+export interface AuthProviderProps extends ProvidersProps { }
+
+export interface DashboardProviderProps extends ProvidersProps { }
 
 export interface AuthContextProps{
     activeButton: string;
@@ -12,6 +18,17 @@ export interface AuthContextProps{
     handleLogout: any;
     isLogged: boolean;
     user: any;
+}
+
+export interface DashboardContextProps {
+    results: any;
+    handleOption: any;
+    setResults: any;
+    option: string;
+    setOption: any;
+    handleFavoriteCharacter: any;
+    handleFavoriteComic: any;
+
 }
 
 export interface FormProps{
