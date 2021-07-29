@@ -2,17 +2,17 @@ import { Router } from 'react-router-dom'
 import history from './history'
 import GlobalStyle from './styles/GlobalStyle'
 import { Routes } from "./routes"
-import { AuthProvider } from './Context/auth'
+import { Contexts } from "./Context"
 
 
 function App() {
   return (
-    <AuthProvider>
+    <Contexts>
       <Router history={history}>
         <Routes />
         <GlobalStyle />
       </Router>
-    </AuthProvider>
+    </Contexts>
   );
 }
 
