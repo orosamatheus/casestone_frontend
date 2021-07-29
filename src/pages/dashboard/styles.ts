@@ -2,9 +2,9 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     background: #222f3e;
+    height:100vh;
 `
 export const ContentContainer = styled.div`
-   height:150vh;
 
 `
 export const SearchBarContainer = styled.form`
