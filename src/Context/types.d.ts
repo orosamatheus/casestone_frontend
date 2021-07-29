@@ -28,6 +28,8 @@ export interface DashboardContextProps {
     setOption: any;
     handleFavoriteCharacter: any;
     handleFavoriteComic: any;
+    handleUnfavoriteCharacter: any;
+    handleUnfavoriteComic: any;
 
 }
 
