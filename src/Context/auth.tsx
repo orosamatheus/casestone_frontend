@@ -1,11 +1,11 @@
 import {useState, createContext, useEffect} from 'react';
-import { ProviderProps, AuthContextProps, FormProps } from './types'
+import { AuthProviderProps, AuthContextProps, FormProps } from './types'
 import { useForm } from 'react-hook-form'
 import history from "../history"
 
 const Context = createContext({} as AuthContextProps);
 
-function AuthProvider({children}: ProviderProps){
+function AuthProvider({children}: AuthProviderProps){
    
     const { register, handleSubmit} = useForm<FormProps>();
     const [activeButton, setActiveButton] = useState('');
@@ -31,7 +31,7 @@ function AuthProvider({children}: ProviderProps){
       }, [])
 
       function handleLogin (user: any) {
-        localStorage.setItem('token', JSON.stringify(user.token))
+        localStorage.setItem('token', user.token)
         localStorage.setItem('user', JSON.stringify(user))
     
         console.log(user)
