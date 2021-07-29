@@ -32,10 +32,15 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
         display: flex;
         
+        
     }
 
     a {
         text-decoration: none;
+    }
+
+    ul, li {
+        list-style: none;
     }
 `
 export default GlobalStyle
