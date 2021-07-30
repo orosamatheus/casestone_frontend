@@ -34,8 +34,6 @@ function AuthProvider({children}: AuthProviderProps){
         localStorage.setItem('token', user.token)
         localStorage.setItem('user', JSON.stringify(user))
     
-        console.log(user)
-    
         setUser(user)
         setIsLogged(true)
         history.push('/dashboard')

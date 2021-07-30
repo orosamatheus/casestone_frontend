@@ -29,7 +29,6 @@ export default function Details() {
         async function getResults() {
             const response = await api.get(`/marvel/${option}Id/${id}`)
             setResults(response.data)
-            console.log(response.data)
         }
         getResults()
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -16,14 +16,11 @@ function DashboardProvider({children}: DashboardProviderProps){
 
     async function handleOption({option, search}: RequestMarvelProps){
         const response = await api.get(`/marvel/${option}/${search}`)
-        console.log(response.data)
         setResults(response.data)
     }
 
     async function handleFavoriteCharacter(id : string){
-
         const token = localStorage.getItem('token')
-        console.log(token)
 
         try {
             await api.post(`/characters`, {
@@ -39,9 +36,7 @@ function DashboardProvider({children}: DashboardProviderProps){
         }
     }
     async function handleFavoriteComic(id : string){
-
         const token = localStorage.getItem('token')
-        console.log(token)
 
         try {
             await api.post(`/comics`, {
