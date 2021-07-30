@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../../../Context/auth"
 
-import { HeaderContainer, HeaderContent, SignOut } from './styles'
+import { HeaderContainer, HeaderContent, HeaderLink } from './styles'
 
 
 export default function Header() {
@@ -12,9 +12,9 @@ export default function Header() {
     return (
         <HeaderContainer>
             <HeaderContent>
-                <SignOut href='/profile'>Welcome, {user.name}</SignOut>
-                <SignOut href='/favorites'>Favorites</SignOut>
-                <SignOut onClick={() => handleLogout()} href='/home'>Sign out</SignOut>
+                <HeaderLink href='/profile'>Welcome, {user.name}</HeaderLink>
+                <HeaderLink href='/favorites'>Favorites</HeaderLink>
+                <HeaderLink onClick={() => handleLogout()} href='/home'>Sign out</HeaderLink>
 
             </HeaderContent>
         </HeaderContainer>

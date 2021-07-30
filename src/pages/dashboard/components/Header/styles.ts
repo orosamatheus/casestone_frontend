@@ -21,7 +21,7 @@ export const HeaderContent = styled.div`
     }
 
 `
-export const SignOut = styled.a`
+export const HeaderLink = styled.a`
     height: 3rem;
     border-radius: 3rem;
     background:#34485F;

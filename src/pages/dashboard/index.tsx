@@ -25,7 +25,7 @@ export default function DashBoard() {
             <Header />
             <ContentContainer>
                 <SearchBarContainer onSubmit ={handleSubmit}>
-                    <input type="text" onChange={(e) => setSearch(e.target.value)} />
+                    <input placeholder ="Search for your favorites here!" type="text" onChange={(e) => setSearch(e.target.value)} />
                     <select onChange={(e) => setOption(e.target.value)}>
                         <option value="characters">Characters</option>
                         <option value="comics">Comics</option>
@@ -35,7 +35,6 @@ export default function DashBoard() {
                     {results === undefined ? 
                     <SearchFavorites>
                         <img src={detailAvatar} alt='ico'/>
-                        <h1>Search for your favorites!</h1>
                     </SearchFavorites> :
                         <Body>
                             {results.map((result: any) => (

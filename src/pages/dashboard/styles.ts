@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     background: #222f3e;
-    height:100vh;
+    height:150vh;
 `
 export const ContentContainer = styled.div`
 
@@ -23,6 +23,11 @@ export const SearchBarContainer = styled.form`
         padding: 15px;
         font-size: 16px;
         font-weight: bold;
+
+        ::placeholder {
+            text-align: center;
+            color: #222f3e;         
+        }
     }
 
     select{
