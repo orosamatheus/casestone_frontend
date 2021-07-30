@@ -15,7 +15,6 @@ export default function Details() {
 
     const {
         option,
-        setOption,
         handleFavoriteCharacter,
         handleFavoriteComic,
         handleUnfavoriteCharacter,
@@ -28,13 +27,6 @@ export default function Details() {
     useEffect(() => {
 
         async function getResults() {
-
-            if (option === "characters"){
-                setOption("comics")
-            } else {
-                setOption("characters")
-            }
-
             const response = await api.get(`/marvel/${option}Id/${id}`)
             setResults(response.data)
             console.log(response.data)
