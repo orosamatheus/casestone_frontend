@@ -24,9 +24,9 @@ function Cadastro(){
             alert("Sua conta foi criada com sucesso!")
             setTimeout(() => {
                 history.push('/login')
-            }, 6000)
+            }, 4000)
 
-            localStorage.setItem('user_email', data.email)
+           
         } catch(error) {
             if(error.response) {
                 alert(error.response.data.message)
