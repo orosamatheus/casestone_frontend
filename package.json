@@ -1,6 +1,5 @@
 {
   "name": "stone-frontend",
-  "homepage": "https://orosamatheus.github.io/stone-frontend/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
