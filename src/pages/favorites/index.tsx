@@ -2,16 +2,20 @@ import { useEffect, useState, useContext } from "react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 
-import { Context } from "../.../../../Context/auth";
+import { Context } from "../../Context/auth";
 
-import { HeaderContainer, HeaderContent, SignOut } from "../dashboard/components/Header/styles";
+import { Context as DashboardContext } from "../../Context/dashboard"
+
+import { HeaderContainer, HeaderContent, HeaderLink } from "../dashboard/components/Header/styles";
 
 import { Container, Title, FavoritesContainer } from "./styles"
 
 export default function Favorites() {
     const { handleLogout, user } = useContext(Context);
+    const { setOption } = useContext(DashboardContext);
     const [favoritesComics, setFavoritesComics] = useState([]);
     const [favoritesCharacters, setFavoritesCharacters] = useState([]);
+
 
     useEffect(() => {
 
@@ -40,16 +44,16 @@ export default function Favorites() {
         <Container>
             <HeaderContainer>
                 <HeaderContent>
-                    <SignOut href="/profile"> Here is your favorites, {user.name}</SignOut>
-                    <SignOut href="/dashboard">Voltar</SignOut>
-                    <SignOut onClick={() => handleLogout()} href='/home'> Sign out</SignOut>
+                    <HeaderLink href="/profile"> Here is your favorites, {user.name}</HeaderLink>
+                    <HeaderLink href="/dashboard">Voltar</HeaderLink>
+                    <HeaderLink onClick={() => handleLogout()} href='/home'> Sign out</HeaderLink>
                 </HeaderContent>
             </HeaderContainer>
             <Title>Favorite Comics</Title>
             <FavoritesContainer>
                 {favoritesComics.map((favoriteComic: any) => (
-                    <li>
-                        <Link to ={`dashboard/details/${favoriteComic.comic.id}`}>
+                    <li key = {favoriteComic.comic.id}>
+                        <Link onClick = {() => setOption("comics")}to ={`dashboard/details/${favoriteComic.comic.id}`}>
                             <img src={`${favoriteComic.comic.thumbnail.path}/portrait_medium.jpg`} alt='ico' />
                         </Link>
                         <div>
@@ -61,15 +65,13 @@ export default function Favorites() {
             </FavoritesContainer>
             <Title>Favorites Characters</Title>
             <FavoritesContainer>
-                {favoritesCharacters.map((favoritesCharacter: any) => (
-                    <li>
-                        <Link to={`dashboard/details/${favoritesCharacter.character.id}`}>
-                            <img src={`${favoritesCharacter.character.thumbnail.path}/portrait_medium.jpg`} alt='ico' />
+                {favoritesCharacters.map((favoriteCharacter: any) => (
+                    <li key= {favoriteCharacter.character.id}>
+                        <Link onClick={() => setOption("characters")} to={`dashboard/details/${favoriteCharacter.character.id}`}>
+                            <img src={`${favoriteCharacter.character.thumbnail.path}/portrait_medium.jpg`} alt='ico' />
                         </Link>
-                        <div>
-                            <h3>{favoritesCharacter.character.name}</h3>
-                            <p>{favoritesCharacter.character.description}</p>
-                        </div>
+                        <h3>{favoriteCharacter.character.name}</h3>
+                        
                     </li>
                 ))}
             </FavoritesContainer>
